@@ -2,17 +2,17 @@
 
 import 'package:intl/intl.dart';
 import 'package:appwrite/appwrite.dart';
-import 'package:appwrite_flutter_starter_kit/data/models/log.dart';
-import 'package:appwrite_flutter_starter_kit/data/models/project_info.dart';
+import 'package:taskpay/data/models/log.dart';
+import 'package:taskpay/data/models/project_info.dart';
 
 /// A repository responsible for handling network interactions with the Appwrite server.
 ///
 /// It provides a helper method to ping the server.
 class AppwriteRepository {
   static const String pingPath = "/ping";
-  static const String appwriteProjectId = String.fromEnvironment('APPWRITE_PROJECT_ID');
-  static const String appwriteProjectName = String.fromEnvironment('APPWRITE_PROJECT_NAME');
-  static const String appwritePublicEndpoint = String.fromEnvironment('APPWRITE_PUBLIC_ENDPOINT');
+  static const String appwriteProjectId = "688f8000001f918da5ed";
+  static const String appwriteProjectName = "TaskPay";
+  static const String appwritePublicEndpoint = "https://nyc.cloud.appwrite.io/v1";
 
   final Client _client = Client()
       .setProject(appwriteProjectId)
@@ -20,6 +20,15 @@ class AppwriteRepository {
 
   late final Account _account;
   late final Databases _databases;
+
+  /// Getter for the Appwrite client
+  Client get client => _client;
+
+  /// Getter for the Account service
+  Account get account => _account;
+
+  /// Getter for the Databases service
+  Databases get databases => _databases;
 
   AppwriteRepository._internal() {
     _account = Account(_client);

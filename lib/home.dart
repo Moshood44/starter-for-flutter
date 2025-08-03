@@ -1,22 +1,22 @@
-import 'package:appwrite_flutter_starter_kit/data/models/log.dart';
-import 'package:appwrite_flutter_starter_kit/data/models/status.dart';
-import 'package:appwrite_flutter_starter_kit/data/repository/appwrite_repository.dart';
-import 'package:appwrite_flutter_starter_kit/ui/components/checkered_background.dart';
-import 'package:appwrite_flutter_starter_kit/ui/components/collapsible_bottomsheet.dart';
-import 'package:appwrite_flutter_starter_kit/ui/components/connection_status_view.dart';
-import 'package:appwrite_flutter_starter_kit/ui/components/getting_started_cards.dart';
-import 'package:appwrite_flutter_starter_kit/ui/components/top_platform_view.dart';
-import 'package:appwrite_flutter_starter_kit/utils/extensions/build_context.dart';
+import 'package:taskpay/data/models/log.dart';
+import 'package:taskpay/data/models/status.dart';
+import 'package:taskpay/data/repository/appwrite_repository.dart';
+import 'package:taskpay/ui/components/checkered_background.dart';
+import 'package:taskpay/ui/components/collapsible_bottomsheet.dart';
+import 'package:taskpay/ui/components/connection_status_view.dart';
+import 'package:taskpay/ui/components/getting_started_cards.dart';
+import 'package:taskpay/ui/components/top_platform_view.dart';
+import 'package:taskpay/utils/extensions/build_context.dart';
 import 'package:flutter/material.dart';
 
-class AppwriteStarterKit extends StatefulWidget {
-  const AppwriteStarterKit({super.key});
+class TaskPayHome extends StatefulWidget {
+  const TaskPayHome({super.key});
 
   @override
-  State<AppwriteStarterKit> createState() => _AppwriteStarterKit();
+  State<TaskPayHome> createState() => _TaskPayHomeState();
 }
 
-class _AppwriteStarterKit extends State<AppwriteStarterKit> {
+class _TaskPayHomeState extends State<TaskPayHome> {
   final List<Log> _logs = [];
   Status _status = Status.idle;
   final AppwriteRepository _repository = AppwriteRepository();
@@ -58,7 +58,7 @@ class _AppwriteStarterKit extends State<AppwriteStarterKit> {
                         );
                       },
                     ),
-                    GettingStartedCards()
+                    const GettingStartedCards()
                   ],
                 ),
               ),

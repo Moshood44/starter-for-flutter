@@ -1,6 +1,6 @@
-import 'package:appwrite_flutter_starter_kit/data/models/status.dart';
-import 'package:appwrite_flutter_starter_kit/ui/icons/appwrite.dart';
-import 'package:appwrite_flutter_starter_kit/utils/extensions/build_context.dart';
+import 'package:taskpay/data/models/status.dart';
+import 'package:taskpay/ui/icons/appwrite.dart';
+import 'package:taskpay/utils/extensions/build_context.dart';
 import 'package:flutter/material.dart';
 
 import 'connection_line.dart';

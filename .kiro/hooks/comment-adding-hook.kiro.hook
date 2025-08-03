@@ -1,0 +1,16 @@
+{
+  "enabled": true,
+  "name": "Comment Adding",
+  "description": "Automatically adds helpful comments and documentation to Dart code files when they are edited",
+  "version": "1",
+  "when": {
+    "type": "userTriggered",
+    "patterns": [
+      "lib/**/*.dart"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "A Dart file has been modified. Please analyze the code and add helpful comments where appropriate. Focus on:\n1. Adding class-level documentation comments\n2. Adding method/function documentation comments\n3. Adding inline comments for complex logic\n4. Ensuring comments follow Dart documentation standards (///)\n5. Making the code more readable and maintainable\n\nPlease maintain the existing code functionality while improving documentation and readability through strategic comment placement."
+  }
+}

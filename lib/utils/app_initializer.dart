@@ -4,6 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:window_manager/window_manager.dart';
+import 'package:taskpay/data/services/service_locator.dart';
+import 'package:taskpay/data/repository/appwrite_repository.dart';
 
 /// A utility class for initializing the Flutter application.
 ///
@@ -19,6 +21,31 @@ class AppInitializer {
     _ensureInitialized();
     await _setupWindowDimensions();
     await _setupDeviceOrientation();
+    await _initializeServices();
+  }
+
+  /// Initialize application services
+  static _initializeServices() async {
+    await ServiceLocator().initialize();
+    await _initializeAppwrite();
+  }
+
+  /// Initialize Appwrite connection
+  static _initializeAppwrite() async {
+    try {
+      final repository = AppwriteRepository();
+      final pingResult = await repository.ping();
+      if (kDebugMode) {
+        debugPrint('Appwrite connection initialized: ${pingResult.status == 200 ? 'Success' : 'Failed'}');
+        if (pingResult.status != 200) {
+          debugPrint('Ping response: ${pingResult.response}');
+        }
+      }
+    } catch (e) {
+      if (kDebugMode) {
+        debugPrint('Failed to initialize Appwrite: $e');
+      }
+    }
   }
 
   /// Ensures that Flutter bindings are initialized.

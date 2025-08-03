@@ -1,8 +1,8 @@
-import 'package:appwrite_flutter_starter_kit/data/models/log.dart';
-import 'package:appwrite_flutter_starter_kit/data/models/project_info.dart';
-import 'package:appwrite_flutter_starter_kit/ui/components/responsive_layout.dart';
-import 'package:appwrite_flutter_starter_kit/ui/components/single_wrap.dart';
-import 'package:appwrite_flutter_starter_kit/utils/extensions/colors.dart';
+import 'package:taskpay/data/models/log.dart';
+import 'package:taskpay/data/models/project_info.dart';
+import 'package:taskpay/ui/components/responsive_layout.dart';
+import 'package:taskpay/ui/components/single_wrap.dart';
+import 'package:taskpay/utils/extensions/colors.dart';
 import 'package:flutter/material.dart';
 
 class CollapsibleBottomSheet extends StatefulWidget {
