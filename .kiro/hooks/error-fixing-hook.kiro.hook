@@ -1,0 +1,18 @@
+{
+  "enabled": true,
+  "name": "Error Fixing",
+  "description": "Automatically analyzes Dart/Flutter files for errors and provides fixes when code changes are detected",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "lib/**/*.dart",
+      "pubspec.yaml",
+      "analysis_options.yaml"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Analyze the modified Dart/Flutter files for any compilation errors, runtime errors, linting issues, or potential bugs. Provide specific fixes and explanations for any issues found. Focus on: 1) Syntax errors 2) Type errors 3) Import/dependency issues 4) Flutter widget errors 5) Performance issues 6) Best practice violations. If no errors are found, confirm the code looks good."
+  }
+}

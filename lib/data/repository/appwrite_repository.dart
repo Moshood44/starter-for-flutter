@@ -1,3 +1,5 @@
+// ignore_for_file: unused_field
+
 import 'package:intl/intl.dart';
 import 'package:appwrite/appwrite.dart';
 import 'package:appwrite_flutter_starter_kit/data/models/log.dart';
