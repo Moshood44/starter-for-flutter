@@ -158,37 +158,6 @@ class _SignInScreenState extends State<SignInScreen> {
                   ),
                   const SizedBox(height: 24),
 
-                  // Divider
-                  Row(
-                    children: [
-                      const Expanded(child: Divider()),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 16),
-                        child: Text(
-                          'OR',
-                          style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                            color: Theme.of(context).colorScheme.onSurfaceVariant,
-                          ),
-                        ),
-                      ),
-                      const Expanded(child: Divider()),
-                    ],
-                  ),
-                  const SizedBox(height: 24),
-
-                  // Third-party sign in buttons (placeholder for future implementation)
-                  OutlinedButton.icon(
-                    onPressed: _isLoading ? null : () {
-                      // TODO: Implement Google sign in
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text('Google sign in coming soon!'),
-                        ),
-                      );
-                    },
-                    icon: const Icon(Icons.g_mobiledata),
-                    label: const Text('Continue with Google'),
-                  ),
                   const SizedBox(height: 32),
 
                   // Sign up link

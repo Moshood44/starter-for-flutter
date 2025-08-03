@@ -4,7 +4,7 @@
   "description": "Automatically analyzes Dart/Flutter files for errors and provides fixes when code changes are detected",
   "version": "1",
   "when": {
-    "type": "fileEdited",
+    "type": "userTriggered",
     "patterns": [
       "lib/**/*.dart",
       "pubspec.yaml",

@@ -12,7 +12,7 @@ class AppwriteUserRepository implements UserRepository {
   static const String _profilesCollectionId = 'user_profiles';
   static const String _ratingsCollectionId = 'ratings';
   static const String _usersCollectionId = 'users';
-  static const String _databaseId = 'taskpay_db';
+  static const String _databaseId = String.fromEnvironment('APPWRITE_DATABASE_ID', defaultValue: '688f8c2a000e8d008100');
   static const String _bucketId = 'profile_images';
 
   final AppwriteRepository _repository;

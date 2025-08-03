@@ -1,50 +1,76 @@
-# Flutter Starter Kit with Appwrite
+# 📱 TaskPay - Student Task Marketplace
 
-Kickstart your Flutter development with this ready-to-use starter project integrated
-with [Appwrite](https://appwrite.io).
+TaskPay connects students who need tasks done with other students who want to earn money. Built with Flutter and Appwrite.
 
-This guide will help you quickly set up, customize, and build your Flutter app.
+## 🚀 Quick Start
 
----
-
-## 🚀 Getting Started
-
-### Clone the Project
-
-Clone this repository to your local machine using Git or directly from `Android Studio`:
-
+### 1. Clone and Install
 ```bash
-git clone https://github.com/appwrite/starter-for-flutter
+git clone <your-repo-url>
+cd taskpay
+flutter pub get
 ```
 
-Alternatively, open the repository URL in `Android Studio` to clone it directly.
+### 2. Set Up Backend (5 minutes)
+Follow our **super easy** setup guide: [docs/appwrite-setup.md](docs/appwrite-setup.md)
+
+### 3. Configure Environment
+1. Copy `.env.example` to `.env`
+2. Add your Appwrite Project ID from step 2
+
+### 4. Run the App
+```bash
+flutter run --dart-define-from-file=.env
+```
+
+## ✨ Features
+
+- 🔐 **User Authentication** - Sign up as Poster or Tasker
+- 👤 **User Profiles** - Manage your profile and ratings
+- 📝 **Task Management** - Post and discover tasks
+- 💬 **Real-time Chat** - Communicate with task partners
+- 💳 **Secure Payments** - Escrow system with Paystack
+- 🌙 **Dark/Light Theme** - Choose your preferred theme
+
+## 🏗️ Architecture
+
+```
+lib/
+├── data/           # Data layer (models, repositories, services)
+├── ui/             # UI layer (screens, widgets, themes)
+└── utils/          # Utilities and helpers
+```
+
+## 🧪 Testing
+
+```bash
+flutter test
+```
+
+## 📚 Documentation
+
+- [Appwrite Setup Guide](docs/appwrite-setup.md) - Backend setup
+- [API Documentation](docs/api.md) - API reference
+- [Contributing Guide](CONTRIBUTING.md) - How to contribute
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🆘 Support
+
+- 📖 [Documentation](docs/)
+- 🐛 [Report Issues](https://github.com/your-username/taskpay/issues)
+- 💬 [Discussions](https://github.com/your-username/taskpay/discussions)
 
 ---
 
-## 🛠️ Development Guide
-
-1. **Configure Appwrite**  
-   Navigate to `lib/data/repository/appwrite_repository.dart` and update the values to match your
-   Appwrite project credentials.
-
-2. **Customize as Needed**  
-   Modify the starter kit to suit your app's requirements. Adjust UI, features, or backend
-   integrations as per your needs.
-
-3. **Run the App**  
-   Select a target device (emulator or a connected physical device) in `Android Studio`, and
-   click **Run** to start the app.
-
----
-
-## 📦 Building for Production
-
-Follow the official Flutter guide on deploying an app to
-production : https://docs.flutter.dev/deployment
-
----
-
-## 💡 Additional Notes
-
-- This starter project is designed to streamline your Android development with Appwrite.
-- Refer to the [Appwrite Documentation](https://appwrite.io/docs) for detailed integration guidance.
+**Made with ❤️ by the TaskPay Team**

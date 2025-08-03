@@ -2,6 +2,7 @@
 
 import 'dart:async';
 import 'package:appwrite/appwrite.dart';
+import 'package:flutter/foundation.dart';
 import 'package:taskpay/data/models/user.dart';
 import 'package:taskpay/data/models/user_role.dart';
 import 'package:taskpay/data/repository/appwrite_repository.dart';
@@ -10,7 +11,7 @@ import 'package:taskpay/data/services/authentication_service.dart';
 /// Appwrite implementation of AuthenticationService
 class AppwriteAuthenticationService implements AuthenticationService {
   static const String _usersCollectionId = 'users';
-  static const String _databaseId = 'taskpay_db';
+  static const String _databaseId = String.fromEnvironment('APPWRITE_DATABASE_ID', defaultValue: '688f8c2a000e8d008100');
 
   final AppwriteRepository _repository;
   final Account _account;
@@ -48,12 +49,22 @@ class AppwriteAuthenticationService implements AuthenticationService {
   @override
   Future<User> signUp(String email, String password, UserRole role) async {
     try {
+      if (kDebugMode) {
+        debugPrint('Starting sign up for email: $email');
+        debugPrint('Using database ID: $_databaseId');
+        debugPrint('Using collection ID: $_usersCollectionId');
+      }
+
       // Create account with Appwrite
       final account = await _account.create(
         userId: ID.unique(),
         email: email,
         password: password,
       );
+
+      if (kDebugMode) {
+        debugPrint('Account created successfully: ${account.$id}');
+      }
 
       // Create user document in database with role information
       final userDoc = await _databases.createDocument(
@@ -68,6 +79,10 @@ class AppwriteAuthenticationService implements AuthenticationService {
           'isVerified': false,
         },
       );
+
+      if (kDebugMode) {
+        debugPrint('User document created successfully');
+      }
 
       // Create User object
       final user = User(
@@ -84,6 +99,9 @@ class AppwriteAuthenticationService implements AuthenticationService {
 
       return user;
     } on AppwriteException catch (e) {
+      if (kDebugMode) {
+        debugPrint('Sign up failed - Code: ${e.code}, Message: ${e.message}');
+      }
       throw _handleAppwriteException(e);
     }
   }
@@ -181,17 +199,22 @@ class AppwriteAuthenticationService implements AuthenticationService {
 
   /// Handle Appwrite exceptions and convert to custom exceptions
   Exception _handleAppwriteException(AppwriteException e) {
+    // Log detailed error for debugging
+    if (kDebugMode) {
+      debugPrint('Appwrite Error - Code: ${e.code}, Type: ${e.type}, Message: ${e.message}');
+    }
+    
     switch (e.code) {
       case 400:
-        return AuthenticationException('Invalid request. Please check your input.');
+        return AuthenticationException('Invalid request: ${e.message ?? "Please check your input"}');
       case 401:
-        return AuthenticationException('Invalid credentials. Please try again.');
+        return AuthenticationException('Authentication failed: ${e.message ?? "Invalid credentials"}');
       case 409:
         return AuthenticationException('User already exists with this email.');
       case 429:
         return AuthenticationException('Too many requests. Please try again later.');
       default:
-        return AuthenticationException(e.message ?? 'Authentication failed');
+        return AuthenticationException(e.message ?? 'Authentication failed (Code: ${e.code})');
     }
   }
 
